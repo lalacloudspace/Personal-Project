@@ -1,6 +1,8 @@
 # web Server Docker Image For Ubuntu.
 
-# This project provides a Docker image (webserver:v1.0.0) designed to set up and run an Apache web server on Ubuntu. The container serves a custom index.html file on port 80, allowing users to quickly deploy a basic web server for testing or demonstration purposes.
+# This project provides a Docker image (webserver:v1.0.0) designed to set up and run an Apache web server on Ubuntu. 
+The container serves a custom index.html file on port 80, allowing users to quickly deploy a basic web server for testing 
+or demonstration purposes.
 
 # Specify the base image.
 FROM ubuntu
