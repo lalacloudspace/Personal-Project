@@ -1,3 +1,9 @@
+#Automated EC2 Instance Deployment with CloudFormation
+
+#This project provides an AWS CloudFormation template to automate the deployment of EC2 instances in a variety of regions. 
+#It demonstrates the power of cross-stack references, allowing you to set up EC2 instances that dynamically reference VPC and
+#security group resources from another stack.
+
 AWSTemplateFormatVersion: '2010-09-09'
 
 Description:  Simple EC2 instance deployment referencing vpcStack.
