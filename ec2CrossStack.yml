@@ -4,15 +4,14 @@ Description:  Simple EC2 instance deployment referencing vpcStack.
 
 Parameters:
   ProjectinstanceType:
-    Type: 'AWS::SSM::Parameter::Value<String>'
-    Default: InstanceType
+    Type: String
+    Default: "t2.micro"  
     Description: EC2 instance type.
-
+  
   KeyName:
     Description: Name of an existing EC2 KeyPair for SSH access.
     Type: AWS::EC2::KeyPair::KeyName
-    
-
+    Default: my_key_pair
 Mappings:
   RegionMap:
     us-east-1:
@@ -39,8 +38,7 @@ Resources:
       KeyName: !Ref KeyName
       InstanceType: !Ref ProjectinstanceType
       NetworkInterfaces:
-        -
-          AssociatePublicIpAddress: true
+        - AssociatePublicIpAddress: true
           DeviceIndex: 0
           DeleteOnTermination: true
           SubnetId: !ImportValue "PubSub1"
@@ -67,19 +65,18 @@ Resources:
 Outputs:
   InstanceId:
     Description: EC2 Instance ID
-    Value: !Ref  MyEC2Instance
+    Value: !Ref MyEC2Instance
     Export:
       Name: !Sub "${AWS::StackName}-InstanceId"
 
   PublicIp:
-    Description: EC2 Instance Private IPv4 Address
+    Description: EC2 Instance Public IPv4 Address
     Value: !GetAtt MyEC2Instance.PublicIp
     Export:
-      Name: !Sub "${AWS::StackName}-PubilcIp"
+      Name: !Sub "${AWS::StackName}-PublicIp"  
 
   PublicDNSName:
     Description: EC2 Instance Public DNS Name
-    Value: !GetAtt  MyEC2Instance.PublicDnsName
+    Value: !GetAtt MyEC2Instance.PublicDnsName
     Export:
       Name: !Sub "${AWS::StackName}-PublicDnsName"
-
